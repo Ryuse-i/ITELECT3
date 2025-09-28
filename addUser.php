@@ -19,37 +19,37 @@
         $password = trim($_POST['password']);
 
         if(empty($name) || empty($email) || empty($password)){
-            header('Location: loginForm.php?user=empty_fields');
+            header('Location: addUserForm.php?user=empty_fields');
             exit;
         }
 
         if(strlen($password) < 8){
-            header('Location: registerForm.php?user=pass_short');
+            header('Location: addUserForm.php?user=pass_short');
             exit;
         }
 
         if(!preg_match('/[A-Z]/', $password)){
-            header('Location: registerForm.php?user=no_uppercase');
+            header('Location: addUserForm.php?user=no_uppercase');
             exit;
         }
 
         if(!preg_match('/[a-z]/', $password)){
-            header('Location: registerForm.php?user=no_lowercase');
+            header('Location: addUserForm.php?user=no_lowercase');
             exit;
         }
 
         if(!preg_match('/\d/', $password)){
-            header('Location: registerForm.php?user=no_digits');
+            header('Location: addUserForm.php?user=no_digits');
             exit;
         }
 
         if(!preg_match('/\W/', $password)){
-            header('Location: registerForm.php?user=no_special_chars');
+            header('Location: addUserForm.php?user=no_special_chars');
             exit;
         }
 
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            header('Location: registerForm.php?user=invalid_email');
+            header('Location: addUserForm.php?user=invalid_email');
             exit;
         }
 
@@ -78,8 +78,6 @@
                 $statement->execute();
                 $row =$statement->rowCount();
 
-                header('Location: dashboard.php');
-                exit;
             }catch(PDOException $error){
                 header('Location: addUserForm.php?user=add_failed');
                 die("ERROR: " . $error->getMessage());
