@@ -22,7 +22,7 @@
         
         // CSRF token validation
         if(!isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-            header('Location: dashboard.php?user=csrf_error');
+            header('Location: dashboard.php?action=csrf_error');
             exit;
         }
 

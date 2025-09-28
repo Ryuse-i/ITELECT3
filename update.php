@@ -13,7 +13,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // CSRF token validation
         if(!isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-            header('Location: dashboard.php?user=csrf_error');
+            header('Location: dashboard.php?action=csrf_error');
             exit;
         }
 
@@ -23,7 +23,7 @@
 
         // Server-side input validation for email
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            header('Location: dashboard.php?user=invalid_email');
+            header('Location: dashboard.php?action=invalid_email');
         }
 
         // Sanitize inputs
