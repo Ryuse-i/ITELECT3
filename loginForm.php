@@ -45,8 +45,6 @@ if (isset($_GET['user'])){  // Check if there's a 'user' parameter in the URL
     <!-- Login-Form with client-side input validation -->
     <form id="user-form" action="login.php" method="POST">
         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"> <!-- Hidden input to send csrf token -->
-        <label for="name">Name</label> <br>
-        <input type="text" name="name" placeholder="Full Name" required><br><br>
         <label for="email">Email</label> <br>
         <input type="email" name="email" placeholder="email@example.com" required><br><br>
         <label for="password">Password</label> <br>
